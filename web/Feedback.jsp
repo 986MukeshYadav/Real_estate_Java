@@ -9,12 +9,23 @@
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            margin: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
         }
 
         #feedback-form {
             max-width: 400px;
             margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
         }
 
         .star-rating {
@@ -42,51 +53,29 @@
 <body>
 
     <%@ include file="Navbar.jsp" %><br/><br/><br/><br/>
-    <div id="feedback-form">
-        <h2>Please rate your experience</h2>
-        
-        <!-- Star Ratings -->
-        <div>
-            <span class="star-rating" onclick="rate(1)">★</span>
-            <span class="star-rating" onclick="rate(2)">★</span>
-            <span class="star-rating" onclick="rate(3)">★</span>
-            <span class="star-rating" onclick="rate(4)">★</span>
-            <span class="star-rating" onclick="rate(5)">★</span>
+    <div class="container">
+        <div id="feedback-form">
+            <h2>Please rate your experience</h2>
+            
+            <!-- Star Ratings -->
+            <div>
+                <span class="star-rating" onclick="rate(1)">★</span>
+                <span class="star-rating" onclick="rate(2)">★</span>
+                <span class="star-rating" onclick="rate(3)">★</span>
+                <span class="star-rating" onclick="rate(4)">★</span>
+                <span class="star-rating" onclick="rate(5)">★</span>
+            </div>
+
+            <!-- Feedback Message -->
+            <textarea id="feedback-message" placeholder="Leave your feedback..."></textarea>
+
+            <!-- Submit Buttons -->
+            <button class="btn btn-success" id="submit-button" onclick="submitFeedback()">Submit</button>
+            <button class="btn ml-5" id="submit-button" onclick="window.location.href='index.jsp'">Cancel</button>
         </div>
-
-        <!-- Feedback Message -->
-        <textarea id="feedback-message" placeholder="Leave your feedback..."></textarea>
-
-        <!-- Submit Button -->
-        <button  class="btn btn-success "  id="submit-button" onclick="window.location.href='index.jsp'">Submit</button>
-        <button  class="btn  ml-5"  id="submit-button" onclick="window.location.href='index.jsp'">Cancel</button>
     </div>
 
-    <script>
-        let selectedRating = 0;
-
-        function rate(rating) {
-            selectedRating = rating;
-            highlightStars(rating);
-        }
-
-        function highlightStars(count) {
-            const stars = document.querySelectorAll('.star-rating');
-            stars.forEach((star, index) => {
-                star.classList.toggle('checked', index < count);
-            });
-        }
-
-        function submitFeedback() {
-            const message = document.getElementById('feedback-message').value;
-            if (selectedRating === 0) {
-                alert('Please select a rating!');
-            } else {
-                alert(`Rating: ${selectedRating}\nFeedback: ${message || 'No feedback provided'}`);
-                // You can send this data to your server for processing
-            }
-        }
-    </script><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<%@ include file="Footer.jsp" %>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <%@ include file="Footer.jsp" %>
 </body>
 </html>

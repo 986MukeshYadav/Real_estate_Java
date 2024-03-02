@@ -16,6 +16,10 @@
         <servlet-name>UpdateUserDataServlet</servlet-name>
         <servlet-class>UpdateUserDataServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FeedbackDOA</servlet-name>
+        <servlet-class>FeedbackDOA</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignInServlet</servlet-name>
         <url-pattern>/SignInServlet</url-pattern>
@@ -39,5 +43,9 @@
     <servlet-mapping>
         <servlet-name>UpdateUserDataServlet</servlet-name>
         <url-pattern>/UpdateUserDataServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackDOA</servlet-name>
+        <url-pattern>/FeedbackDOA</url-pattern>
     </servlet-mapping>
 </web-app>

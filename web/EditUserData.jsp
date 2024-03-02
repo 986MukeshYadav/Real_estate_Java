@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +16,74 @@
     </style>
 </head>
 <body>
+    
+  
+
+    <div class="container-fluid">
+        <div class="row">
+<!-- Sidebar -->
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" style="min-height: 100vh;">
+    <div class="sidebar-sticky">
+        <div class="col-4">
+            <img src="<%= request.getContextPath() %>/imgs/Ranjan.png" class="rounded-circle" alt="Circular Image" style="width: 110px; height: 100px;">
+            <br/>
+            <b style="font-size: 15px; white-space: nowrap;" class="text-dark"><%= session.getAttribute("name") %></b>
+            <b style="font-size: 12px" class="text-dark"><%= session.getAttribute("email") %></b>
+        </div>
+        <br/>
+        <b>
+            <ul class="nav flex-column">
+               
+               <div class="sidebar-button">
+                <a href="User.jsp">
+                    <img src="<%= request.getContextPath() %>/imgs/dash.png" alt="Login Icon" width="30" height="30" >
+                   <span style="color: black;">Dashboard</span></a>
+            </div>&nbsp;
+
+      <div class="sidebar-button" >
+        <img src="<%= request.getContextPath() %>/imgs/property.png" onclick="window.location.href='User.jsp'" alt="Login Icon" width="30" height="30">
+        <span>Property</span>
+      </div>&nbsp;
+
+      <div class="sidebar-button">
+        <img src="<%= request.getContextPath() %>/imgs/fav.png" alt="Login Icon" width="30" height="30">
+        <span>Favourite</span>
+      </div>&nbsp;
+
+      <div class="sidebar-button">
+        <img src="<%= request.getContextPath() %>/imgs/setting.png" alt="Login Icon" width="30" height="30">
+        <span>Setting</span>
+      </div>&nbsp;
+      <div class="sidebar-button">
+        <img src="<%= request.getContextPath() %>/imgs/feedback.png" onclick="window.location.href='Feedback.jsp'" alt="Login Icon" width="30" height="30">
+        <span>Feedback</span>
+      </div>&nbsp;
+      
+      <div class="sidebar-button">
+        <img src="<%= request.getContextPath() %>/imgs/logout.png" onclick="window.location.href='logout.jsp'" alt="Login Icon" width="30" height="30">
+        <span>Logout</span>
+      </div>
+    </div>
+            </ul>
+        </b>
+    
+</nav>
+         <!-- Main Content Area -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">HomeLand</h1>
+                    <i class="fa fa-bell" style="font-size:40px"></i>
+                </div>
+
 
 <div class="container mt-5">
-    <h2>Edit Personal Information</h2>
+    <h2 class="text-center">Edit Personal Information</h2>
    <form action="<%= request.getContextPath() %>/UpdateUserData.jsp" method="post">
+       <div class="form-group">
+            <label for="name">Name</label>
+            <input type="name" class="form-control" id="name" name="name" placeholder="Enter Name"
+                   value="<%= session.getAttribute("name") %>">
+        </div>
 
         <div class="form-group">
             <label for="email">Email:</label>
@@ -39,7 +103,8 @@
         <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
 </div>
-
+        </div>
+<%@ include file="Footer.jsp" %>
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

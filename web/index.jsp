@@ -54,9 +54,9 @@
                 <span style="font-size: 15px;">Select Your Place</span>
             </button>
             <div class="dropdown-menu" aria-labelledby="locationDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" >Rajkot</a>
+                <a class="dropdown-item" >Ahmedabad</a>
+                <a class="dropdown-item" >Surat</a>
             </div>
             <button class="btn btn-darklight dropdown-toggle ml-5" type="button" id="propertyTypeDropdown"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,9 +64,9 @@
                 <span style="font-size: 15px;">Choose Property Type</span>
             </button>
             <div class="dropdown-menu" aria-labelledby="propertyTypeDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" >Rent</a>
+                <a class="dropdown-item" >House</a>
+                
             </div>
             <button class="btn btn-darklight dropdown-toggle ml-5" type="button" id="priceRangeDropdown"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,9 +74,9 @@
                 <span style="font-size: 15px;">Choose Price Range</span>
             </button>
             <div class="dropdown-menu" aria-labelledby="priceRangeDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" >5,00,000-8,00,000</a>
+                <a class="dropdown-item" >8,00,000-10,00,000</a>
+                <a class="dropdown-item" >10,00,000-15,00,000</a>
             </div>
             <button type="button" class="btn btn-primary ml-5 fa fa-search" style="font-size:20px">&nbsp;Search</button>
         </div>
