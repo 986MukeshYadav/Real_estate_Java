@@ -44,6 +44,8 @@ public class SignInServlet extends HttpServlet {
         // Retrieve user input from the form
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        
+     
 
         try {
             // Get a database connection
@@ -60,12 +62,20 @@ public class SignInServlet extends HttpServlet {
                     if (resultSet.next()) {
                         String userEmail = resultSet.getString("email");
                         String userType = resultSet.getString("role");
+                        
+                     
+
                        
-                  //change       
+                        
                 // Create a session and set attributes
                 //HttpSession session = request.getSession();
                 session.setAttribute("name", resultSet.getString("name"));
-
+                session.setAttribute("email", resultSet.getString("email"));
+                session.setAttribute("phone", resultSet.getString("phone"));
+                session.setAttribute("address", resultSet.getString("address"));
+                
+                
+                
                 // Add cookies
                 Cookie emailCookie = new Cookie("userEmail", userEmail);
                 Cookie roleCookie = new Cookie("userRole", userType);

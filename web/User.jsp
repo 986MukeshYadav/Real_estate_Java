@@ -106,31 +106,30 @@
       <div class="container-left mx-5">
         <img src="<%= request.getContextPath() %>/imgs/Ranjan.png" class="rounded-circle" alt="Circular Image" style="width: 110px; height: 100px;">
         <br/><br/>
-        <b style="font-size: 20px; white-space: nowrap;" class="text-dark">Ranjan Yadav</b></br>
-        &nbsp;&nbsp;&nbsp; <button type="button" style="width:7rem;" class="btn btn-primary my-5 btn-lg">Edit</button>
+        <b style="font-size: 20px; white-space: nowrap;" class="text-dark"><%= session.getAttribute("name") %></b></br>
+        &nbsp;&nbsp;&nbsp; <a href="EditUserData.jsp" class="btn btn-primary my-5 btn-lg">Edit</a>
       </div>
 
       <div class="center-line"></div>
 
-      <div class="container-right">
-                    <div class="container">
-              <h2>Personal Information</h2>
-                 
-              <form action="UserData" method="get">
-                <div class="form-group">
-                  <label for="email">Email:</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter email" value="<%= request.getAttribute("email") %>">
-                </div>
-                <div class="form-group">
-                  <label for="phone">Phone:</label>
-                  <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" value="<%= request.getAttribute("phone") %>">
-                </div>
-                <div class="form-group">
-                  <label for="address">Address:</label>
-                  <input type="text" class="form-control" id="address" placeholder="Enter address" value="<%= request.getAttribute("address") %>">
-                </div>
-              </form>
+    
+    <div class="container">
+        <h2>Personal Information</h2>
+        <form action="UserData" method="get">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" value="<%= session.getAttribute("email") %>">
             </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" value="<%= session.getAttribute("phone") %>">
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" placeholder="Enter address" value="<%= session.getAttribute("address") %>">
+            </div>
+        </form>
+    </div>
 
         </form>
       </div>

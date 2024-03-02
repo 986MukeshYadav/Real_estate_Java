@@ -12,6 +12,10 @@
         <servlet-name>UserDetailsServlet</servlet-name>
         <servlet-class>UserDetailsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateUserDataServlet</servlet-name>
+        <servlet-class>UpdateUserDataServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignInServlet</servlet-name>
         <url-pattern>/SignInServlet</url-pattern>
@@ -24,15 +28,16 @@
         <servlet-name>UserDetailsServlet</servlet-name>
         <url-pattern>/UserDetailsServlet</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
-    <servlet-name>UserData</servlet-name>
-    <servlet-class>com.example.display</servlet-class>
-</servlet>
-
-<servlet-mapping>
-    <servlet-name>UserData</servlet-name>
-    <url-pattern>/User</url-pattern>
-</servlet-mapping>
+        <servlet-name>UserData</servlet-name>
+        <servlet-class>com.example.display</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserData</servlet-name>
+        <url-pattern>/User</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserDataServlet</servlet-name>
+        <url-pattern>/UpdateUserDataServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
