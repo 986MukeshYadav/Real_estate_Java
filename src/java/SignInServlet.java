@@ -61,7 +61,7 @@ public class SignInServlet extends HttpServlet {
                         String userEmail = resultSet.getString("email");
                         String userType = resultSet.getString("role");
                        
-                        
+                  //change       
                 // Create a session and set attributes
                 //HttpSession session = request.getSession();
                 session.setAttribute("name", resultSet.getString("name"));
