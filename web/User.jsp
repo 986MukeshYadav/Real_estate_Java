@@ -14,7 +14,7 @@
         crossorigin="anonymous">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <link rel="stylesheet" href="Dash.css">
-   <style>
+     <style>
     .center-line {
       position: absolute;
       left: 30%;
@@ -36,6 +36,25 @@
       padding-left: 20px; /* Adjust as needed */
     }
   </style>
+    <script>
+     function toggleEditSave() {
+    var emailField = document.getElementById('email');
+    var phoneField = document.getElementById('phone');
+    var addressField = document.getElementById('address');
+    var saveBtn = document.getElementById('saveBtn');
+
+    if (emailField.readOnly) {
+        // Enable editing
+        emailField.readOnly = false;
+        phoneField.readOnly = false;
+        addressField.readOnly = false;
+        saveBtn.innerHTML = 'Save';
+    } else {
+        // Save the changes
+        document.getElementById('userInfoForm').submit();
+    }
+}
+    </script>
   
 </head>
 
@@ -51,8 +70,8 @@
         <div class="col-4">
             <img src="<%= request.getContextPath() %>/imgs/Ranjan.png" class="rounded-circle" alt="Circular Image" style="width: 110px; height: 100px;">
             <br/>
-            <b style="font-size: 15px; white-space: nowrap;" class="text-dark">Ranjan Yadav</b>
-            <b style="font-size: 12px" class="text-dark">ryadav081@rku.ac.in</b>
+            <b style="font-size: 15px; white-space: nowrap;" class="text-dark"><%= session.getAttribute("name") %></b>
+            <b style="font-size: 12px" class="text-dark"><%= session.getAttribute("email") %></b>
         </div>
         <br/>
         <b>
@@ -81,7 +100,7 @@
         <span>Feedback</span>
       </div>&nbsp;
       
-      <div class="sidebar-button">
+      <div class="sidebar-button"onclick="window.location.href='index.jsp'">
         <img src="<%= request.getContextPath() %>/imgs/logout.png" alt="Login Icon" width="30" height="30">
         <span>Logout</span>
       </div>
@@ -107,31 +126,33 @@
         <img src="<%= request.getContextPath() %>/imgs/Ranjan.png" class="rounded-circle" alt="Circular Image" style="width: 110px; height: 100px;">
         <br/><br/>
         <b style="font-size: 20px; white-space: nowrap;" class="text-dark"><%= session.getAttribute("name") %></b></br>
-        &nbsp;&nbsp;&nbsp; <a href="EditUserData.jsp" class="btn btn-primary my-5 btn-lg">Edit</a>
+        &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary my-5 btn-lg" id="saveBtn" onclick="toggleEditSave()">Edit</button>
+
       </div>
+ 
 
       <div class="center-line"></div>
 
-    
-    <div class="container">
+      <div class="container-right">
+            <div class="container">
         <h2>Personal Information</h2>
-        <form action="UserData" method="get">
+        <form id="userInfoForm" method="post" action="UpdateUserInfoServlet">
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" value="<%= session.getAttribute("email") %>">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="<%= session.getAttribute("email") %>" readonly>
             </div>
             <div class="form-group">
                 <label for="phone">Phone:</label>
-                <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" value="<%= session.getAttribute("phone") %>">
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter phone number" value="<%= session.getAttribute("phone") %>" readonly>
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
-                <input type="text" class="form-control" id="address" placeholder="Enter address" value="<%= session.getAttribute("address") %>">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" value="<%= session.getAttribute("address") %>" readonly>
             </div>
+     
         </form>
     </div>
 
-        </form>
       </div>
     </div>
   </div>

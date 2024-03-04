@@ -17,13 +17,13 @@
            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <ul class="navbar-nav ml-auto mr-5"> <!-- Use ml-auto to push items to the right and mr-3 for right margin -->
                    <li class="nav-item active">
-                       <a class="nav-link" href="#">Home</a>
+                       <a class="nav-link" href="index.jsp">Home</a>
                    </li>  &nbsp;
                    <li class="nav-item active">
                        <a class="nav-link" href="#">Property</a>
                    </li>&nbsp;
                    <li class="nav-item active">
-                       <a class="nav-link" href=Footer.jsp">Contact</a>
+                       <a class="nav-link" href="Footer.jsp">Contact</a>
                    </li>&nbsp;&nbsp;
                    <li class="nav-item active">
                        <a class="nav-link" href="Dashboard.jsp">Dashboard</a>
@@ -32,12 +32,12 @@
                        if(session.getAttribute("name")!= null)
                        {
                        %>
-                       <li><button type="button" class="btn btn-primary" onclick="window.location.href='logout.jsp'"><%= session.getAttribute("name") %></button>
+                       <li><button type="button" class="btn btn-primary" onclick="window.location.href='logout.jsp'"> Logout</button>
                    </li>
                    <%
                    } else{
 %>
-                   <li><button type="button" class="btn btn-primary" onclick="window.location.href='Signup.jsp'">Sign up</button>
+                   <li><button type="button" class="btn btn-primary" onclick="window.location.href='Signin.jsp'">Join us</button>
                    </li>
                    <%
 }

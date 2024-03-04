@@ -28,8 +28,8 @@
         <div class="col-4">
             <img src="<%= request.getContextPath() %>/imgs/Ranjan.png" class="rounded-circle" alt="Circular Image" style="width: 110px; height: 100px;">
             <br/>
-            <b style="font-size: 15px; white-space: nowrap;" class="text-dark">Ranjan Yadav</b>
-            <b style="font-size: 12px" class="text-dark">ryadav081@rku.ac.in</b>
+            <b style="font-size: 15px; white-space: nowrap;" class="text-dark"><%= session.getAttribute("name") %></b>
+            <b style="font-size: 12px" class="text-dark"><%= session.getAttribute("email") %></b>
         </div>
         <br/>
         <b>
