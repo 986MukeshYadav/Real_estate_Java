@@ -61,10 +61,14 @@
       </div>&nbsp;
 
       
-      <div class="sidebar-button">
-        <img src="<%= request.getContextPath() %>/imgs/logout.png" alt="Login Icon" width="30" height="30">
-        <span>Logout</span>
-      </div>
+    <div class="sidebar-button" style="height: 50px;">
+    <a href="<%= request.getContextPath() %>/logout.jsp" class="nav-link" style="line-height: 1;">
+        <img src="<%= request.getContextPath() %>/imgs/logout.png" alt="Logout Icon" width="30" height="30">
+        <span style="font-size: 14px;">Logout</span>
+    </a>
+</div>
+
+
     </div>
             </ul>
         </b>

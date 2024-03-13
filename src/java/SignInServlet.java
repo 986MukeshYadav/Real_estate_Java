@@ -79,8 +79,8 @@ public class SignInServlet extends HttpServlet {
                 // Add cookies
                 Cookie emailCookie = new Cookie("userEmail", userEmail);
                 Cookie roleCookie = new Cookie("userRole", userType);
-                emailCookie.setMaxAge(3600);  // Set the expiration time (in seconds)
-                roleCookie.setMaxAge(3600);   // Set the expiration time (in seconds)
+                emailCookie.setMaxAge(3600);  
+                roleCookie.setMaxAge(3600);   
                 response.addCookie(emailCookie);
                 response.addCookie(roleCookie);
                         
