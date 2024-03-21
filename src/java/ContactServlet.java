@@ -1,67 +1,42 @@
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.io.*;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import java.sql.*;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-@WebServlet("/ContactServlet")
 public class ContactServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    // Database connection details (replace with your own)
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/mysql";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "admin";
-
-    static {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            throw new ExceptionInInitializerError(e);
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
 
-        // Retrieve user input from the form
+        // Retrieve form parameters
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String message = request.getParameter("message");
-        
+
+        // Insert data into the database
         try {
-            // Get a database connection
-            Connection connection = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
+            // Load the JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
 
-            // Insert user into the database
-            String insertQuery = "INSERT INTO contact (email, phone, message) VALUES (?, ?, ?)";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
-                preparedStatement.setString(1, email);
-                preparedStatement.setString(2, phone);
-                preparedStatement.setString(3, message);
-                preparedStatement.executeUpdate();
-            }
+            // Connect to the database
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", "root", "admin");
 
-            // Close the database connection
-            connection.close();
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            // Create a SQL statement
+            String sql = "INSERT INTO house_detailsuntitled (email, phone, message) VALUES (?, ?, ?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.setString(2, phone);
+            statement.setString(3, message);
 
-        } catch (SQLException e) {
+            // Execute the statement
+            statement.executeUpdate();
+
+            // Close the connection
+            conn.close();
+        } catch (Exception e) {
             e.printStackTrace();
-            out.println("Error: " + e.getMessage());
         }
+
+        // Redirect or forward the user to another page
+        response.sendRedirect("index.jsp");
     }
 }
