@@ -75,6 +75,10 @@ public class SignInServlet extends HttpServlet {
                 session.setAttribute("address", resultSet.getString("address"));
                 
                 
+                 Cookie loginTimeCookie = new Cookie("loginTime", String.valueOf(System.currentTimeMillis()));
+                 loginTimeCookie.setMaxAge(24 * 60 * 60); // Cookie lasts for 24 hours
+                response.addCookie(loginTimeCookie);
+                
                 
                 // Add cookies
                 Cookie emailCookie = new Cookie("userEmail", userEmail);

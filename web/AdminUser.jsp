@@ -1,7 +1,26 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
+
+
+<%
+    Cookie[] cookies = request.getCookies();
+    String lastLoginTime = "";
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("loginTime")) {
+                long loginTimeMillis = Long.parseLong(cookie.getValue());
+                Date loginDate = new Date(loginTimeMillis);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                lastLoginTime = sdf.format(loginDate);
+                break;
+            }
+        }
+    }
+%>
 <%
     Connection conSelect = null;
     PreparedStatement selectStatement = null;
@@ -103,6 +122,7 @@
                     <th>Phone</th>
                     <th>Address</th>
                     <th>Role</th>
+                    <th>Last LoggedIn</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -118,6 +138,7 @@
                 <td><%= result.getString("phone") %></td>
                 <td><%= result.getString("address") %></td>
                 <td><%= result.getString("role") %></td>
+                <td> <%= lastLoginTime %></td>
                 <td>
                     <a href="<%= request.getContextPath() %>/EditUser.jsp?id=<%= result.getString("id") %>"
                        class="btn btn-primary btn-sm">Edit</a>
@@ -131,6 +152,7 @@
         <% } 
     } %>
 </tbody>
+<!--<p>Last Logged Time: <%= lastLoginTime %></p>-->
         </table>
     </div>
 
