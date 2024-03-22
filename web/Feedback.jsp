@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
-    <style>
+     <style>
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
@@ -51,8 +51,7 @@
     </style>
 </head>
 <body>
-
-    <%@ include file="Navbar.jsp" %><br/><br/><br/><br/>
+    <%@ include file="Navbar.jsp" %>
     <div class="container">
         <div id="feedback-form">
             <h2>Please rate your experience</h2>
@@ -71,11 +70,44 @@
 
             <!-- Submit Buttons -->
             <button class="btn btn-success" id="submit-button" onclick="submitFeedback()">Submit</button>
-            <button class="btn ml-5" id="submit-button" onclick="window.location.href='index.jsp'">Cancel</button>
+            <button class="btn ml-5" id="cancel-button" onclick="window.location.href='index.jsp'">Cancel</button>
         </div>
     </div>
-
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     <%@ include file="Footer.jsp" %>
+
+    <script>
+        function rate(value) {
+            // Implement your logic to handle star ratings (if needed)
+            var stars = document.querySelectorAll('.star-rating');
+            for (var i = 0; i < stars.length; i++) {
+                if (i < value) {
+                    stars[i].classList.add('checked');
+                } else {
+                    stars[i].classList.remove('checked');
+                }
+            }
+        }
+
+        function submitFeedback() {
+            var rating = document.querySelectorAll('.star-rating.checked').length;
+            var feedbackMessage = document.getElementById('feedback-message').value;
+
+            // Create a form data object
+            var formData = new FormData();
+            formData.append('rating', rating);
+            formData.append('feedbackMessage', feedbackMessage);
+
+            // Send the form data to the server to store in the database
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "feedbackServlet", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle successful submission (if needed)
+                    console.log("Feedback submitted successfully");
+                }
+            };
+            xhr.send(formData);
+        }
+    </script>
 </body>
 </html>
