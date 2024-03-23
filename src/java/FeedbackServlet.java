@@ -1,49 +1,64 @@
-import java.io.*;
-import jakarta.servlet.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
-import java.sql.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/feedbackServlet")
+@WebServlet("/FeedbackServlet")
 public class FeedbackServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int rating = Integer.parseInt(request.getParameter("rating"));
-        String feedbackMessage = request.getParameter("feedbackMessage");
+    // JDBC URL, username, and password of MySQL server
+    private final String jdbcURL = "jdbc:mysql://localhost:3306/mysql";
+    private final String jdbcUsername = "root";
+    private final String jdbcPassword = "admin";
 
-        // JDBC code to insert data into the database
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get parameters from the request
+        String rating = request.getParameter("rating");
+        String message = request.getParameter("message");
+
+        // JDBC variables
         Connection conn = null;
         PreparedStatement stmt = null;
-        try {
-            // Establish database connection (you need to replace DB_URL, USER, PASS with actual values)
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mysql", "root", "admin");
 
-            // SQL query to insert data
-            String sql = "INSERT INTO feedback (rating, feedback_message) VALUES (?, ?)";
+        try {
+            // Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+
+            // Open a connection
+            conn = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+
+            // Prepare SQL query
+            String sql = "INSERT INTO feedback (rating, message) VALUES (?, ?)";
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, rating);
-            stmt.setString(2, feedbackMessage);
+            stmt.setString(1, rating);
+            stmt.setString(2, message);
 
             // Execute the query
             stmt.executeUpdate();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace(); // Handle errors appropriately
+
+            // Redirect back to index.jsp or any other page
+            response.sendRedirect("index.jsp");
+        } catch (SQLException | ClassNotFoundException ex) {
+            // Handle errors
+            ex.printStackTrace();
         } finally {
-            // Close connections
+            // Close JDBC objects
             try {
-                if (stmt != null)
+                if (stmt != null) {
                     stmt.close();
-                if (conn != null)
+                }
+                if (conn != null) {
                     conn.close();
-            } catch (SQLException se) {
-                se.printStackTrace(); // Handle errors appropriately
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
         }
-
-        // Send response
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write("Feedback submitted successfully");
     }
 }

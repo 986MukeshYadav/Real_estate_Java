@@ -5,27 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
-     <style>
+    <style>
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
+            margin: 50px;
         }
 
         #feedback-form {
             max-width: 400px;
             margin: auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
         }
 
         .star-rating {
@@ -51,63 +40,48 @@
     </style>
 </head>
 <body>
-    <%@ include file="Navbar.jsp" %>
-    <div class="container">
-        <div id="feedback-form">
-            <h2>Please rate your experience</h2>
-            
-            <!-- Star Ratings -->
-            <div>
-                <span class="star-rating" onclick="rate(1)">★</span>
-                <span class="star-rating" onclick="rate(2)">★</span>
-                <span class="star-rating" onclick="rate(3)">★</span>
-                <span class="star-rating" onclick="rate(4)">★</span>
-                <span class="star-rating" onclick="rate(5)">★</span>
-            </div>
 
-            <!-- Feedback Message -->
-            <textarea id="feedback-message" placeholder="Leave your feedback..."></textarea>
-
-            <!-- Submit Buttons -->
-            <button class="btn btn-success" id="submit-button" onclick="submitFeedback()">Submit</button>
-            <button class="btn ml-5" id="cancel-button" onclick="window.location.href='index.jsp'">Cancel</button>
+    <%@ include file="Navbar.jsp" %><br/><br/><br/><br/>
+    <form id="feedback-form" method="post" action="FeedbackServlet">
+        <h2>Please rate your experience</h2>
+        
+        <!-- Star Ratings -->
+        <div>
+            <span class="star-rating" onclick="rate(1)">★</span>
+            <span class="star-rating" onclick="rate(2)">★</span>
+            <span class="star-rating" onclick="rate(3)">★</span>
+            <span class="star-rating" onclick="rate(4)">★</span>
+            <span class="star-rating" onclick="rate(5)">★</span>
         </div>
-    </div>
-    <%@ include file="Footer.jsp" %>
+
+        <!-- Hidden Input Fields for Rating -->
+        <input type="hidden" id="rating" name="rating">
+
+        <!-- Feedback Message -->
+        <textarea id="feedback-message" name="message" placeholder="Leave your feedback..."></textarea>
+
+        <!-- Submit Button -->
+        <button class="btn btn-success" id="submit">Submit</button>
+        <button class="btn ml-5" id="submit-button" onclick="window.location.href='index.jsp'">Cancel</button>
+    </form>
 
     <script>
-        function rate(value) {
-            // Implement your logic to handle star ratings (if needed)
-            var stars = document.querySelectorAll('.star-rating');
-            for (var i = 0; i < stars.length; i++) {
-                if (i < value) {
-                    stars[i].classList.add('checked');
-                } else {
-                    stars[i].classList.remove('checked');
-                }
-            }
+        let selectedRating = 0;
+
+        function rate(rating) {
+            selectedRating = rating;
+            highlightStars(rating);
+            // Set the value of the hidden input field for rating
+            document.getElementById('rating').value = rating;
         }
 
-        function submitFeedback() {
-            var rating = document.querySelectorAll('.star-rating.checked').length;
-            var feedbackMessage = document.getElementById('feedback-message').value;
-
-            // Create a form data object
-            var formData = new FormData();
-            formData.append('rating', rating);
-            formData.append('feedbackMessage', feedbackMessage);
-
-            // Send the form data to the server to store in the database
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "feedbackServlet", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Handle successful submission (if needed)
-                    console.log("Feedback submitted successfully");
-                }
-            };
-            xhr.send(formData);
+        function highlightStars(count) {
+            const stars = document.querySelectorAll('.star-rating');
+            stars.forEach((star, index) => {
+                star.classList.toggle('checked', index < count);
+            });
         }
-    </script>
-</body>
+    </script><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<%@ include file="Footer.jsp" %>
+</body> 
 </html>

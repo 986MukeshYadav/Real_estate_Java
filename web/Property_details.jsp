@@ -20,25 +20,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+            
+ 
 </head>
-<body>
-<%@ include file="Navbar.jsp" %>
-<main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-5">
-    <div class="container mt-4">
+
+    <body>
+    <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-5">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+            <h1 class="h2">HomeLand</h1>
+        </div>
+   <form action="PropertyServlet" method="post">
+        <div class="container">
+            <input type="hidden" name="property_id" value="House1">
+            <input type="hidden" name="property_name" value="Apartment"> 
+            <input type="hidden" name="property_country" value="Nepal"> 
+            <input type="hidden" name="property_address" value="28 Westport Dr. Warminster, PA 18974">
+            <input type="hidden" name="property_price" value="242334">
+         
+            <h5 class="ml-5"> House1</h5>
+           <div class="d-flex align-items-center">
+        <p class="card-text ml-5 mr-5">28 Westport Dr. Warminster, PA 18974</p>
+         <div style="margin-right: 200px;"></div>   
+         
+     <div class="text-center"> <!-- Center aligns its content -->
+        <span class="btn btn-primary mr-3" style="border-radius: 20px; padding: 5px 10px; height: 20px; font-size: 14px;">House</span>
+        <span class="btn btn-success" style="border-radius: 20px; padding: 5px 10px; height: 20px; font-size: 14px;">Nepal</span>
+    </div>
+        <div style="margin-right: 320px;"></div> 
+        <span style="color: #28a745; font-weight: bold" >$ 242334 </span>
+    </div>
+        </div>
+    <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="card">
-                    <img src="<%= request.getContextPath() %>/imgs/page1.jpg" class="card-img-top" alt="House 5">
-                    <div class="card-body">
-                        <h5 class="card-title">House1</h5>
-                        <p class="card-text">28 Westport Dr. Warminster, PA 18974</p>
-                        <p class="card-text"><i class="fa fa-bed"></i> 5 <i class="fa fa-bath"></i> 3 <i
-                                class="fa fa-area-chart"></i> 4200 sqft</p>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Amet, lliot.
-                            Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab
-                            distinctio unde ipsam molestias quateratione delectus blanditiis nemo eius dignissimos
-                            doloremque quaeculqaid pariatur temporibus consequuntur aliquid porro sint esse.</p>
-                    </div>
+                <img src="<%= request.getContextPath() %>/imgs/page1.jpg" class="img-fluid" alt="House 5">
+                <div class="card-body">
+                    <p class="card-text"><i class="fa fa-bed"></i> 5 <i class="fa fa-bath"></i> 3 <i
+                            class="fa fa-area-chart"></i> 4200 sqft</p>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Amet, lliot.
+                        Repudiandae ratione impedit delectus consectetur. Aspernaturvero obcaecati placeat ab
+                        distinctio unde ipsam molestias quateratione delectus blanditiis nemo eius dignissimos
+                        doloremque quaeculqaid pariatur temporibus consequuntur aliquid porro sint esse.</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -46,38 +68,43 @@
                     <div class="card-body row">
                         <img src="<%= request.getContextPath() %>/imgs/Ranjan.png" class="rounded-circle"
                              alt="Grover Robinson" style="width: 70px; height: 70px; border-radius: 50%;">
-                        <div class="ml-3">
-                            <h5 class="card-title"><%= session.getAttribute("name") %></h5>
-                            <span style="color:#00FF00; font-size: 15px">View Listings</span>
+                        <div class="container">
+                            <h5 class="card-title ml-3"><%= session.getAttribute("name") %></h5>
+                            <span style="color:#00FF00; font-size: 15px" class="ml-3">View Listings</span>
                         </div>
                     </div>
                     <div class="card-body">
-    <form action="ContactServlet" method="post">
-        <div class="mb-3">
-            <label for="email" class="form-label">Email*</label>
-            <input type="email" class="form-control" id="email" value="<%= session.getAttribute("email") %>" required>
-        </div>
-        <div class="mb-3">
-            <label for="phone" class="form-label">Phone*</label>
-            <input type="tel" class="form-control" id="phone" value="<%= session.getAttribute("phone") %>" placeholder="Phone" required>
-        </div>
-        <div class="mb-3">
-            <label for="message" class="form-label">Message*</label>
-            <textarea class="form-control" id="message" rows="3" placeholder="Hello, I am interested in [Modern apartment]"></textarea>
-        </div>
-        <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-success">Send Message</button>
-            <button type="button" class="btn btn-secondary">Call</button>
-        </div>
-    </form>
-</div>
+                        <form action="PropertyServlet" method="post">
+                           
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                       placeholder="name@example.com" value="<%= session.getAttribute("email") %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone*</label>
+                                <input type="tel" class="form-control" id="phone" name="phone"
+                                       placeholder="Phone" value="<%= session.getAttribute("phone") %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message*</label>
+                                <textarea class="form-control" id="message" name="message" rows="3"
+                                          placeholder="Hello, I am interested in [Modern apartment]"></textarea>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" value="submit" id="submit" class="btn btn-success">Send
+                                    Message
+                                </button>
+                                <button type="button" class="btn btn-secondary">Call</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </main>
 
-<br/><br/>
 <%@ include file="Footer.jsp" %>
 </body>
 </html>

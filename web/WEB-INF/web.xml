@@ -25,8 +25,8 @@
         <servlet-class>UpdateUserInfoServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ContactServlet</servlet-name>
-        <servlet-class>ContactServlet</servlet-class>
+        <servlet-name>PropertyServlet</servlet-name>
+        <servlet-class>PropertyServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FeedbackServlet</servlet-name>
@@ -65,8 +65,8 @@
         <url-pattern>/UpdateUserInfoServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ContactServlet</servlet-name>
-        <url-pattern>/ContactServlet</url-pattern>
+        <servlet-name>PropertyServlet</servlet-name>
+        <url-pattern>/PropertyServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FeedbackServlet</servlet-name>
