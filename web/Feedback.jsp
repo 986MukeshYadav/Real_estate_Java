@@ -12,9 +12,17 @@
             margin: 50px;
         }
 
-        #feedback-form {
+        #feedback-container {
             max-width: 400px;
             margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #feedback-form {
+            text-align: left; /* Align form elements to the left */
         }
 
         .star-rating {
@@ -40,30 +48,33 @@
     </style>
 </head>
 <body>
-
     <%@ include file="Navbar.jsp" %><br/><br/><br/><br/>
-    <form id="feedback-form" method="post" action="FeedbackServlet">
-        <h2>Please rate your experience</h2>
-        
-        <!-- Star Ratings -->
-        <div>
-            <span class="star-rating" onclick="rate(1)">★</span>
-            <span class="star-rating" onclick="rate(2)">★</span>
-            <span class="star-rating" onclick="rate(3)">★</span>
-            <span class="star-rating" onclick="rate(4)">★</span>
-            <span class="star-rating" onclick="rate(5)">★</span>
-        </div>
 
-        <!-- Hidden Input Fields for Rating -->
-        <input type="hidden" id="rating" name="rating">
+    <!-- Feedback Form Container -->
+    <div id="feedback-container">
+        <form id="feedback-form" method="post" action="FeedbackServlet" onsubmit="return onSubmit()">
+            <h2>Please rate your experience</h2>
+            
+            <!-- Star Ratings -->
+            <div>
+                <span class="star-rating" onclick="rate(1)">★</span>
+                <span class="star-rating" onclick="rate(2)">★</span>
+                <span class="star-rating" onclick="rate(3)">★</span>
+                <span class="star-rating" onclick="rate(4)">★</span>
+                <span class="star-rating" onclick="rate(5)">★</span>
+            </div>
 
-        <!-- Feedback Message -->
-        <textarea id="feedback-message" name="message" placeholder="Leave your feedback..."></textarea>
+            <!-- Hidden Input Fields for Rating -->
+            <input type="hidden" id="rating" name="rating">
 
-        <!-- Submit Button -->
-        <button class="btn btn-success" id="submit">Submit</button>
-        <button class="btn ml-5" id="submit-button" onclick="window.location.href='index.jsp'">Cancel</button>
-    </form>
+            <!-- Feedback Message -->
+            <textarea id="feedback-message" name="message" placeholder="Leave your feedback..."></textarea>
+
+            <!-- Submit Button -->
+            <button class="btn btn-success" id="submit">Submit</button>
+            <button class="btn ml-5" id="submit-button" onclick="window.location.href='index.jsp'">Cancel</button>
+        </form>
+    </div>
 
     <script>
         let selectedRating = 0;
@@ -80,6 +91,13 @@
             stars.forEach((star, index) => {
                 star.classList.toggle('checked', index < count);
             });
+        }
+
+        function onSubmit() {
+            // You can add additional validation here if needed
+            // For now, just showing an alert
+            alert("Submitted successfully");
+            return true; // Returning true will allow the form submission to proceed
         }
     </script><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 <%@ include file="Footer.jsp" %>
