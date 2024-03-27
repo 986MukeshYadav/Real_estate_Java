@@ -17,6 +17,7 @@
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
               crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <link rel="stylesheet" href="Dash.css">
     </head>
     <body>
@@ -91,7 +92,8 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>#</th> 
+                                <th>Name</th>
                                 <th>Rating</th>
                                 <th>Message</th>
                                 <th>Actions</th>
@@ -109,17 +111,21 @@
                                     rs = ps.executeQuery();
                                     while(rs.next()) {
                                         int id = rs.getInt("id");
+                                        String name = rs.getString("name");
                                         String rating = rs.getString("rating");
                                         String message = rs.getString("message");
                             %>
                             <tr>
                                 <td><%= id %></td>
+                                <td><%= name %></td>
                                 <td><%= rating %></td>
                                 <td><%= message %></td>
                                 <td>
-                                    <!-- Add buttons for actions -->
-                                    <a href="#" class="btn btn-primary btn-sm">View</a>
-                                </td>
+    <!-- Add button for delete action -->
+    <a href="DeleteFeedback.jsp?id=<%= id %>" class="btn btn-primary btn-danger">
+        <i class="fa fa-trash"></i> Remove
+    </a>
+</td>
                             </tr>
                             <% 
                                     }

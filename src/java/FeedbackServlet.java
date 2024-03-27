@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/FeedbackServlet")
 public class FeedbackServlet extends HttpServlet {
@@ -21,6 +22,9 @@ public class FeedbackServlet extends HttpServlet {
         // Get parameters from the request
         String rating = request.getParameter("rating");
         String message = request.getParameter("message");
+        
+          HttpSession session = request.getSession();
+        String name = (String) session.getAttribute("name");
 
         // JDBC variables
         Connection conn = null;
@@ -34,10 +38,11 @@ public class FeedbackServlet extends HttpServlet {
             conn = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 
             // Prepare SQL query
-            String sql = "INSERT INTO feedback (rating, message) VALUES (?, ?)";
+            String sql = "INSERT INTO feedback (name,rating, message) VALUES (?,?, ?)";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, rating);
-            stmt.setString(2, message);
+            stmt.setString(1, name);
+            stmt.setString(2, rating);
+            stmt.setString(3, message);
 
             // Execute the query
             stmt.executeUpdate();
