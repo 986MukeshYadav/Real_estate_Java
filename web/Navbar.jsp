@@ -19,12 +19,12 @@
                    <li class="nav-item active">
                        <a class="nav-link" href="index.jsp">Home</a>
                    </li>  &nbsp;
-                   <li class="nav-item active">
-                       <a class="nav-link" href="#">Property</a>
-                   </li>&nbsp;
-                   <li class="nav-item active">
-                       <a class="nav-link" href="Footer.jsp">Contact</a>
-                   </li>&nbsp;&nbsp;
+                  <li class="nav-item active">
+    <a class="nav-link" href="javascript:void(0);" onclick="scrollToProperty()">Property</a>
+</li>&nbsp;
+                  <li class="nav-item active">
+    <a class="nav-link" href="javascript:void(0);" onclick="scrollToFooter()">Contact</a>
+</li>&nbsp;&nbsp;
                    <li class="nav-item active">
                        <a class="nav-link" href="Dashboard.jsp">Dashboard</a>
                    </li>

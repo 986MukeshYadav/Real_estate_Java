@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +23,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+    
+      <style>
+        /* Add CSS for smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
@@ -84,6 +90,7 @@
     </span>
 
 &nbsp;&nbsp;
+<div id="propertySection">
        <div class="row ml-5">
         <!-- Repeat the following block for each property -->
         <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
@@ -146,8 +153,8 @@
               <p class="compact-card-details">
                 Gondal Rd, Rajkot, Gujarat 360020<br/>
                 <i class="fa fa-bed" style="font-size:16px">&nbsp;6</i>
-                &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;3</i>&nbsp;&nbsp;&nbsp;
-                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4200 sq ft</i>
+                &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;4</i>&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4500 sq ft</i>
               </p>
               <div class="compact-card-price">Rs 18500000</div>
             </div>
@@ -167,9 +174,9 @@
               </h6>&nbsp;
               <p class="compact-card-details">
                 Gondal Rd, Rajkot, Gujarat 360020<br/>
-                <i class="fa fa-bed" style="font-size:16px">&nbsp;6</i>
-                &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;3</i>&nbsp;&nbsp;&nbsp;
-                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4200 sq ft</i>
+                <i class="fa fa-bed" style="font-size:16px">&nbsp;4</i>
+                &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;2</i>&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4300 sq ft</i>
               </p>
               <div class="compact-card-price">Rs 13500000</div>
             </div>
@@ -191,7 +198,7 @@
                 Gondal Rd, Rajkot, Gujarat 360020<br/>
                 <i class="fa fa-bed" style="font-size:16px">&nbsp;6</i>
                 &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;3</i>&nbsp;&nbsp;&nbsp;
-                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4200 sq ft</i>
+                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4600 sq ft</i>
               </p>
               <div class="compact-card-price">Rs 12500000</div>
             </div>
@@ -213,7 +220,7 @@
                 Gondal Rd, Rajkot, Gujarat 360020<br/>
                 <i class="fa fa-bed" style="font-size:16px">&nbsp;6</i>
                 &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;3</i>&nbsp;&nbsp;&nbsp;
-                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4200 sq ft</i>
+                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;5200 sq ft</i>
               </p>
               <div class="compact-card-price">Rs 13500000</div>
             </div>
@@ -234,8 +241,8 @@
               <p class="compact-card-details">
                 Gondal Rd, Rajkot, Gujarat 360020<br/>
                 <i class="fa fa-bed" style="font-size:16px">&nbsp;6</i>
-                &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;3</i>&nbsp;&nbsp;&nbsp;
-                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4200 sq ft</i>
+                &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;2</i>&nbsp;&nbsp;&nbsp;
+                <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4600 sq ft</i>
               </p>
               <div class="compact-card-price">Rs 16500000</div>
             </div>
@@ -265,7 +272,7 @@
         </div>
              
              
-             
+       </div>    
       </div>
              
              
@@ -328,9 +335,19 @@
 </div>
 
 <br/><br/>
-
+<div id="footerSection">
 <%@ include file="Footer.jsp" %>
+</div>
 
 
+<script>
+function scrollToProperty() {
+    document.getElementById("propertySection").scrollIntoView({ behavior: 'smooth' });
+}
+
+function scrollToFooter() {
+    document.getElementById("footerSection").scrollIntoView({ behavior: 'smooth' });
+}
+</script>
 </body>
 </html>
