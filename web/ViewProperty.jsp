@@ -134,7 +134,9 @@
                         <td><%= message %></td>
                          <td>
                                     <!-- Add buttons for actions -->
-                                    <a href="#" class="btn btn-primary btn-sm">View</a>
+                                    <a href="#" class="btn btn-primary btn-danger">
+                                     <i class="fa fa-trash"></i> Remove
+                                    </a>
                                    
                                     <!-- You can add more buttons or modify these according to your needs -->
                                 </td>
