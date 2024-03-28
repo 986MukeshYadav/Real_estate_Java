@@ -96,6 +96,7 @@
                                 <th>Name</th>
                                 <th>Rating</th>
                                 <th>Message</th>
+                                <th>feedback_time </th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -114,12 +115,15 @@
                                         String name = rs.getString("name");
                                         String rating = rs.getString("rating");
                                         String message = rs.getString("message");
+                                        String feedback_time = rs.getString("feedback_time");
                             %>
                             <tr>
                                 <td><%= id %></td>
                                 <td><%= name %></td>
                                 <td><%= rating %></td>
                                 <td><%= message %></td>
+                                <td><%= feedback_time %></td>
+                                
                                 <td>
     <!-- Add button for delete action -->
     <a href="DeleteFeedback.jsp?id=<%= id %>" class="btn btn-primary btn-danger">

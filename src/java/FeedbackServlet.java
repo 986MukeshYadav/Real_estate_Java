@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet("/FeedbackServlet")
 public class FeedbackServlet extends HttpServlet {
@@ -23,7 +25,12 @@ public class FeedbackServlet extends HttpServlet {
         String rating = request.getParameter("rating");
         String message = request.getParameter("message");
         
-          HttpSession session = request.getSession();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String dateTime = now.format(formatter);
+        
+        
+        HttpSession session = request.getSession();
         String name = (String) session.getAttribute("name");
 
         // JDBC variables
@@ -38,11 +45,12 @@ public class FeedbackServlet extends HttpServlet {
             conn = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 
             // Prepare SQL query
-            String sql = "INSERT INTO feedback (name,rating, message) VALUES (?,?, ?)";
+            String sql = "INSERT INTO feedback (name,rating, message,feedback_time) VALUES (?,?,?,?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, name);
             stmt.setString(2, rating);
             stmt.setString(3, message);
+            stmt.setString(4, dateTime);
 
             // Execute the query
             stmt.executeUpdate();
