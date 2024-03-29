@@ -27,8 +27,13 @@
       <style>
         /* Add CSS for smooth scrolling behavior */
         html {
-            scroll-behavior: smooth;
+            scroll-behavior:smooth;
         }
+        .dropdown-menu-fixed-width {
+    width: 500px; /* Set the desired fixed width */
+}
+
+        
     </style>
 </head>
 
@@ -52,42 +57,55 @@
     </div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-    <span class="d-block p-4 bg-light text-black ml-5" style="width:70%">
-        <div class="dropdown">
-            <button class="btn btn-darklight dropdown-toggle ml-5" type="button" id="locationDropdown"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Location<br />
-                <span style="font-size: 15px;">Select Your Place</span>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="locationDropdown">
-                <a class="dropdown-item" >Rajkot</a>
-                <a class="dropdown-item" >Ahmedabad</a>
-                <a class="dropdown-item" >Surat</a>
+ <span class="d-block p-4 bg-light text-black ml-5" style="width:70%">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="dropdown">
+                <button class="btn btn-darklight dropdown-toggle ml-5" type="button" id="locationDropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Location<br />
+                    <span style="font-size: 15px;">Select Your Place</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="locationDropdown" style="width: 200px;">
+                    <a class="dropdown-item" href="#" onclick="updateDropdown('location', 'Rajkot')">Rajkot</a>
+                    <a class="dropdown-item" href="#" onclick="updateDropdown('location', 'Ahmedabad')">Ahmedabad</a>
+                    <a class="dropdown-item" href="#" onclick="updateDropdown('location', 'Surat')">Surat</a>
+                </div>
             </div>
-            <button class="btn btn-darklight dropdown-toggle ml-5" type="button" id="propertyTypeDropdown"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Property Type<br />
-                <span style="font-size: 15px;">Choose Property Type</span>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="propertyTypeDropdown">
-                <a class="dropdown-item" >Rent</a>
-                <a class="dropdown-item" >House</a>
-                
-            </div>
-            <button class="btn btn-darklight dropdown-toggle ml-5" type="button" id="priceRangeDropdown"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Price Range<br />
-                <span style="font-size: 15px;">Choose Price Range</span>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="priceRangeDropdown">
-                <a class="dropdown-item" >5,00,000-8,00,000</a>
-                <a class="dropdown-item" >8,00,000-10,00,000</a>
-                <a class="dropdown-item" >10,00,000-15,00,000</a>
-            </div>
-            <button type="button" class="btn btn-primary ml-5 fa fa-search" style="font-size:20px">&nbsp;Search</button>
         </div>
+        <div class="col-md-3">
+            <div class="dropdown">
+                <button class="btn btn-darklight dropdown-toggle ml-5" type="button" id="propertyTypeDropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Property Type<br />
+                    <span style="font-size: 15px;">Choose Property Type</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="propertyTypeDropdown" style="width: 200px;">
+                    <a class="dropdown-item" href="#" onclick="updateDropdown('propertyType', 'Rent')">Rent</a>
+                    <a class="dropdown-item" href="#" onclick="updateDropdown('propertyType', 'House')">House</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dropdown">
+                <button class="btn btn-darklight dropdown-toggle ml-5" type="button" id="priceRangeDropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Price Range<br />
+                    <span style="font-size: 15px;">Choose Price Range</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="priceRangeDropdown" style="width: 200px;">
+                    <a class="dropdown-item" href="#" onclick="updateDropdown('priceRange', '5,00,000-8,00,000')">5,00,000-8,00,000</a>
+                    <a class="dropdown-item" href="#" onclick="updateDropdown('priceRange', '8,00,000-10,00,000')">8,00,000-10,00,000</a>
+                    <a class="dropdown-item" href="#" onclick="updateDropdown('priceRange', '10,00,000-15,00,000')">10,00,000-15,00,000</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"><br>
+            <button type="button" id="searchBtn" class="btn btn-primary ml-5 fa fa-search"  style="font-size:20px"> Search</button>
+        </div>
+    </div>
+</span>
 
-    </span>
 
 &nbsp;&nbsp;
 <div id="propertySection">
@@ -134,7 +152,7 @@
                 <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4200 sq ft</i>
               </p>
               <!-- Replace the price value with the dynamic value -->
-              <div class="compact-card-price">Rs 19500000</div>
+              <div class="compact-card-price">Rs <%=1450000%></div>
             </div>
           </div>
         </div>
@@ -156,7 +174,7 @@
                 &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;4</i>&nbsp;&nbsp;&nbsp;
                 <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4500 sq ft</i>
               </p>
-              <div class="compact-card-price">Rs 18500000</div>
+              <div class="compact-card-price">Rs <%=1500000%></div>
             </div>
           </div>
         </div>
@@ -178,7 +196,7 @@
                 &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;2</i>&nbsp;&nbsp;&nbsp;
                 <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4300 sq ft</i>
               </p>
-              <div class="compact-card-price">Rs 13500000</div>
+              <div class="compact-card-price">Rs <%=900000%></div>
             </div>
           </div>
         </div>
@@ -200,7 +218,7 @@
                 &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;3</i>&nbsp;&nbsp;&nbsp;
                 <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4600 sq ft</i>
               </p>
-              <div class="compact-card-price">Rs 12500000</div>
+              <div class="compact-card-price">Rs <%=800000%></div>
             </div>
           </div>
         </div>
@@ -222,7 +240,7 @@
                 &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;3</i>&nbsp;&nbsp;&nbsp;
                 <i class="fa fa-area-chart" style="font-size:16px">&nbsp;5200 sq ft</i>
               </p>
-              <div class="compact-card-price">Rs 13500000</div>
+              <div class="compact-card-price">Rs <%=8500000%></div>
             </div>
           </div>
         </div>
@@ -244,7 +262,7 @@
                 &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;2</i>&nbsp;&nbsp;&nbsp;
                 <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4600 sq ft</i>
               </p>
-              <div class="compact-card-price">Rs 16500000</div>
+              <div class="compact-card-price">Rs <%=65500000%></div>
             </div>
           </div>
         </div>
@@ -266,7 +284,7 @@
                 &nbsp;&nbsp;&nbsp;<i class="fa fa-bath" style="font-size:16px">&nbsp;3</i>&nbsp;&nbsp;&nbsp;
                 <i class="fa fa-area-chart" style="font-size:16px">&nbsp;4200 sq ft</i>
               </p>
-              <div class="compact-card-price">Rs 2500000</div>
+              <div class="compact-card-price">Rs <%=15000000%></div>
             </div>
           </div>
         </div>
@@ -349,5 +367,78 @@ function scrollToFooter() {
     document.getElementById("footerSection").scrollIntoView({ behavior: 'smooth' });
 }
 </script>
+
+  <script>
+    function updateDropdown(type, value) {
+        switch (type) {
+            case 'location':
+                document.getElementById("locationDropdown").innerText = value;
+                break;
+            case 'propertyType':
+                document.getElementById("propertyTypeDropdown").innerText = value;
+                break;
+            case 'priceRange':
+                document.getElementById("priceRangeDropdown").innerText = value;
+                break;
+            default:
+                break;
+        }
+    }
+
+    document.getElementById("searchBtn").addEventListener("click", function () {
+        var location = document.getElementById("locationDropdown").innerText.trim();
+        var propertyType = document.getElementById("propertyTypeDropdown").innerText.trim();
+        var priceRange = document.getElementById("priceRangeDropdown").innerText.trim();
+
+        var properties = document.getElementsByClassName("compact-card");
+        var anyVisible = false; // Flag to track if any property is visible
+
+        for (var i = 0; i < properties.length; i++) {
+            var property = properties[i];
+            var isVisible = true;
+
+            if (location !== "Location") {
+                var locationText = property.querySelector(".btn-success").innerText.trim();
+                if (locationText !== location) {
+                    isVisible = false;
+                }
+            }
+
+            if (propertyType !== "Property Type") {
+                var propertyTypeText = property.querySelector(".btn-primary").innerText.trim();
+                if (propertyTypeText !== propertyType) {
+                    isVisible = false;
+                }
+            }
+
+            if (priceRange !== "Price Range") {
+                var priceRangeText = property.querySelector(".compact-card-price").innerText.trim();
+                var minPrice = parseFloat(priceRangeText.split("Rs")[1].replace(/,/g, ""));
+                var maxPrice = minPrice;
+                if (priceRangeText.indexOf("-") !== -1) {
+                    maxPrice = parseFloat(priceRangeText.split("-")[1].replace(/,/g, ""));
+                }
+                var selectedMinPrice = parseFloat(priceRange.split("-")[0].replace(/,/g, ""));
+                var selectedMaxPrice = parseFloat(priceRange.split("-")[1].replace(/,/g, ""));
+                if (minPrice < selectedMinPrice || maxPrice > selectedMaxPrice) {
+                    isVisible = false;
+                }
+            }
+
+            if (isVisible) {
+                property.style.display = "block";
+                anyVisible = true; // Set flag to true if any property is visible
+            } else {
+                property.style.display = "none";
+            }
+        }
+
+        // Display message if no property is visible
+        if (!anyVisible) {
+            alert("No houses available based on your criteria.");
+        }
+    });
+</script>
+
 </body>
 </html>

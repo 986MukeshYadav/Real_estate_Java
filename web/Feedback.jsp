@@ -72,7 +72,7 @@
 
             <!-- Submit Button -->
             <button class="btn btn-success" id="submit">Submit</button>
-            <button class="btn ml-5" id="submit-button" onclick="window.location.href='index.jsp'">Cancel</button>
+            <button type="button" class="btn ml-5" id="cancel-button" onclick="cancel()">Cancel</button>
         </form>
     </div>
 
@@ -92,14 +92,19 @@
                 star.classList.toggle('checked', index < count);
             });
         }
-
         function onSubmit() {
             // You can add additional validation here if needed
             // For now, just showing an alert
             alert("Submitted successfully");
             return true; // Returning true will allow the form submission to proceed
         }
-    </script><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<%@ include file="Footer.jsp" %>
-</body> 
-</html>
+        function cancel() {
+        // Show an alert
+        alert("Are you sure you want to cancel?");
+        // Redirect to index.jsp after the alert is closed
+        window.location.href = 'index.jsp';
+}
+        </script><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <%@ include file="Footer.jsp" %>
+        </body> 
+        </html>

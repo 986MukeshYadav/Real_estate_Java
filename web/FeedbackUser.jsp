@@ -83,7 +83,7 @@
                         <div class="row justify-content-between">
                             <h2>Feedbacks:</h2>
                         </div><br/>
-                        <h5>All Users Feedback</h5>
+                        <h5>All Users Feedbacks</h5>
                     </div>
 
 
