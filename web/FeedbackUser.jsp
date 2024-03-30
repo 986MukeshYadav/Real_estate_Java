@@ -19,6 +19,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <link rel="stylesheet" href="Dash.css">
+        <script>
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete this feedback?")) {
+            // Proceed with deletion
+            return true;
+        } else {
+            // Cancel deletion
+            return false;
+        }
+    }
+</script>
     </head>
     <body>
         <div class="container-fluid">
@@ -124,12 +135,13 @@
                                 <td><%= message %></td>
                                 <td><%= feedback_time %></td>
                                 
-                                <td>
+    <td>
     <!-- Add button for delete action -->
-    <a href="DeleteFeedback.jsp?id=<%= id %>" class="btn btn-primary btn-danger">
+    <a href="DeleteFeedback.jsp?id=<%= id %>" class="btn btn-primary btn-danger" onclick="confirmDelete()">
         <i class="fa fa-trash"></i> Remove
     </a>
 </td>
+
                             </tr>
                             <% 
                                     }

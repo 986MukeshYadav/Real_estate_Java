@@ -5,20 +5,42 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin User Page</title>
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="Dash.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Property</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Dash.css">
+    <!-- JavaScript Function -->
+    <script>
+        function deleteProperty(propertyId) {
+            if (confirm("Are you sure you want to delete this property?")) {
+                // Send an AJAX request to delete the property
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "<%= request.getContextPath() %>/deleteProperty.jsp", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            // Property deleted successfully
+                            location.reload(); // Refresh the page
+                        } else {
+                            // Error handling
+                            console.error("Error deleting property");
+                        }
+                    }
+                };
+                xhr.send("propertyId=" + propertyId);
+            }
+        }
+    </script>
+</head>
     <body>
         <div class="container-fluid">
             <div class="row">
@@ -132,14 +154,13 @@
                         <td><%= email %></td>
                         <td><%= phone %></td>
                         <td><%= message %></td>
-                         <td>
-                                    <!-- Add buttons for actions -->
-                                    <a href="#" class="btn btn-primary btn-danger">
-                                     <i class="fa fa-trash"></i> Remove
-                                    </a>
-                                   
-                                    <!-- You can add more buttons or modify these according to your needs -->
-                                </td>
+                        <td>
+        <!-- Add buttons for actions -->
+        <a href="#" class="btn btn-primary btn-danger" onclick="deleteProperty('<%= propertyid %>')">
+            <i class="fa fa-trash"></i> Remove
+        </a>
+        <!-- You can add more buttons or modify these according to your needs -->
+    </td>
                     </tr>
                     <% 
                         }

@@ -49,6 +49,15 @@
               crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="Dash.css">
+        <script>
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete this user?")) {
+            // Proceed with deletion by submitting the form
+            document.getElementById("deleteUserForm").submit();
+        }
+    }
+</script>
+
     </head>
 
     <body>
@@ -161,11 +170,12 @@
                                         <a href="<%= request.getContextPath() %>/EditUser.jsp?id=<%= result.getString("id") %>"
                                            class="btn btn-primary btn-sm">Edit</a>
                                     </td><td>
-                                        <form action="<%= request.getContextPath() %>/DeleteUser.jsp" method="post">
-                                            <input type="hidden" name="userId" value="<%= result.getString("id") %>">
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
-                                    </td>
+    <form action="<%= request.getContextPath() %>/DeleteUser.jsp" method="post" id="deleteUserForm">
+        <input type="hidden" name="userId" value="<%= result.getString("id") %>">
+        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">Delete</button>
+    </form>
+</td>
+
                                 </tr>
                                 <% } 
     } %>
