@@ -1,8 +1,8 @@
-<%-- 
-    Document   : logout.jsp
-    Created on : 22-Feb-2024, 11:33:01 am
-    Author     : MUKESH YADAV
---%>
+<%
+  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+  response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+  response.setDateHeader("Expires", 0); // Proxies
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
