@@ -72,4 +72,8 @@
         <servlet-name>FeedbackServlet</servlet-name>
         <url-pattern>/FeedbackServlet</url-pattern>
     </servlet-mapping>
+<!--    <session-config>
+    <tracking-mode>URL</tracking-mode>
+</session-config>-->
+
 </web-app>

@@ -1,8 +1,4 @@
-<%
-  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-  response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-  response.setDateHeader("Expires", 0); // Proxies
-%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +47,7 @@
         <span>Property</span>
       </div>&nbsp;
 
-      <div class="sidebar-button">
+<!--      <div class="sidebar-button">
         <img src="<%= request.getContextPath() %>/imgs/fav.png" alt="Login Icon" width="30" height="30">
         <span>Favourite</span>
       </div>&nbsp;
@@ -59,7 +55,7 @@
       <div class="sidebar-button">
         <img src="<%= request.getContextPath() %>/imgs/setting.png" alt="Login Icon" width="30" height="30">
         <span>Setting</span>
-      </div>&nbsp;
+      </div>&nbsp;-->
       <div class="sidebar-button">
         <img src="<%= request.getContextPath() %>/imgs/feedback.png" onclick="window.location.href='Feedback.jsp'" alt="Login Icon" width="30" height="30">
         <span>Feedback</span>
@@ -86,7 +82,7 @@
 
      <div class="row">
         <!-- Repeat the following block for each property -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <!-- Add dynamic values using JSP expressions -->
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house1.png" alt="Card image cap">
@@ -110,7 +106,7 @@
         </div>
             
              <!-- Card 2 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house2.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -133,7 +129,7 @@
         </div>
         
              <!-- Card 3 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house3.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -155,7 +151,7 @@
         </div>
 
         <!-- Card 4 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house4.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -177,7 +173,7 @@
         </div>
 
         <!-- Card 5 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house5.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -199,7 +195,7 @@
         </div>
 
         <!-- Card 6 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house6.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -221,7 +217,7 @@
         </div>
 
         <!-- Card 7 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'"> 
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house7.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -243,7 +239,7 @@
         </div>
         
          <!-- Card 7 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house8.png" alt="Card image cap">
             <div class="compact-card-body">

@@ -1,8 +1,4 @@
-<%
-  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-  response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-  response.setDateHeader("Expires", 0); // Proxies
-%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +136,7 @@
         </div>
             
              <!-- Card 2 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house2.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -163,7 +159,7 @@
         </div>
         
              <!-- Card 3 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house3.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -185,7 +181,7 @@
         </div>
 
         <!-- Card 4 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house4.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -207,7 +203,7 @@
         </div>
 
         <!-- Card 5 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house5.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -229,7 +225,7 @@
         </div>
 
         <!-- Card 6 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house6.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -251,7 +247,7 @@
         </div>
 
         <!-- Card 7 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house7.png" alt="Card image cap">
             <div class="compact-card-body">
@@ -273,7 +269,7 @@
         </div>
         
          <!-- Card 7 -->
-        <div class="col-md-3">
+        <div class="col-md-3" onclick="window.location.href='Property_details.jsp'">
           <div class="compact-card">
             <img class="card-img-top" src="<%= request.getContextPath() %>/imgs/house8.png" alt="Card image cap">
             <div class="compact-card-body">

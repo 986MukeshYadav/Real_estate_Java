@@ -1,9 +1,23 @@
-<%
-  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-  response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-  response.setDateHeader("Expires", 0); // Proxies
-%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
+<%
+    Cookie[] cookies = request.getCookies();
+    String lastLoginTime = "";
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("loginTime")) {
+                long loginTimeMillis = Long.parseLong(cookie.getValue());
+                Date loginDate = new Date(loginTimeMillis);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                lastLoginTime = sdf.format(loginDate);
+                break;
+            }
+        }
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,7 +105,7 @@
         <span>Property</span>
       </div>&nbsp;
 
-      <div class="sidebar-button">
+<!--      <div class="sidebar-button">
         <img src="<%= request.getContextPath() %>/imgs/fav.png" alt="Login Icon" width="30" height="30">
         <span>Favourite</span>
       </div>&nbsp;
@@ -99,7 +113,7 @@
       <div class="sidebar-button">
         <img src="<%= request.getContextPath() %>/imgs/setting.png" alt="Login Icon" width="30" height="30">
         <span>Setting</span>
-      </div>&nbsp;
+      </div>&nbsp;-->
       <div class="sidebar-button">
         <img src="<%= request.getContextPath() %>/imgs/feedback.png" onclick="window.location.href='Feedback.jsp'" alt="Login Icon" width="30" height="30">
         <span>Feedback</span>
@@ -130,7 +144,9 @@
       <div class="container-left mx-5">
         <img src="<%= request.getContextPath() %>/imgs/Ranjan.png" class="rounded-circle" alt="Circular Image" style="width: 110px; height: 100px;">
         <br/><br/>
+        
         <b style="font-size: 20px; white-space: nowrap;" class="text-dark"><%= session.getAttribute("name") %></b></br>
+        <%= lastLoginTime %>
         &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary my-5 btn-lg" id="saveBtn" onclick="toggleEditSave()">Edit</button>
 
       </div>

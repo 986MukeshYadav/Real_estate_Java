@@ -1,8 +1,4 @@
-<%
-  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-  response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-  response.setDateHeader("Expires", 0); // Proxies
-%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 
@@ -77,10 +73,10 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="min-height: 80vh; padding-top: 20px;">
     <div class="sidebar-sticky">
         <div class="col-4">
-            <img src="<%= request.getContextPath() %>/imgs/Ranjan.png" class="rounded-circle" alt="Circular Image" style="width: 110px; height: 100px;">
+            <img src="<%= request.getContextPath() %>/imgs/Mukesh.jpg" class="rounded-circle" alt="Circular Image" style="width: 110px; height: 100px;">
             <br/>
-            <b style="font-size: 15px; white-space: nowrap;" class="text-dark">Ranjan Yadav</b>
-            <b style="font-size: 12px" class="text-dark">ryadav081@rku.ac.in</b>
+            <b style="font-size: 15px; white-space: nowrap;" class="text-dark">Admin</b>
+            <b style="font-size: 12px" class="text-dark">admin@gmail.com</b>
         </div>
         <br/>
         <b>
